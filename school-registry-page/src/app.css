@@ -10,7 +10,7 @@
 	--color-bg-1: hsl(252, 55%, 40%);
 	--color-bg-2: hsl(262, 59%, 20%);
 	--color-theme-1: #4c00ff;
-	--color-theme-2: rgb(65, 12, 211);
+	--color-theme-2: rgb(52, 2, 161);
 	--color-text: rgba(255, 255, 255, 1);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
@@ -52,7 +52,6 @@ a:hover {
 h1 {
 	font-size: 2rem;
 	text-align: center;
-	padding: 20px;
 }
 
 h2 {
@@ -62,7 +61,7 @@ h2 {
 
 h4 {
 	font-size: 1rem;
-	padding: 20px 80px;
+	padding: 20px 20px 40px 20px;
 }
 
 pre {

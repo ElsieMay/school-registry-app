@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Table from '../components/Table.svelte';
-	import school from '../lib/images/school.jpg';
+	// import school from '../lib/images/school.jpg';
 	import type { StudentData, TeacherData } from '../types/types';
 
 	export const students: StudentData[] = [
@@ -26,17 +26,16 @@
 
 <div class="text-column">
 	<h1>Welcome to our school!</h1>
-	<p>Please see the students and teachers currently registered below...</p>
-</div>
-
-<div class="sub-content">
-	<div class="students">
-		<h2>Enrolled Students:</h2>
-		<Table data={students} columns={studentTableTitles} />
-	</div>
-	<div class="teachers">
-		<h2>Current Teachers:</h2>
-		<Table data={teachers} columns={teacherTableTitles} />
+	<h4>Please see the students and teachers currently registered below...</h4>
+	<div class="sub-content">
+		<div class="students">
+			<h2>Enrolled Students:</h2>
+			<Table data={students} columns={studentTableTitles} />
+		</div>
+		<div class="teachers">
+			<h2>Current Teachers:</h2>
+			<Table data={teachers} columns={teacherTableTitles} />
+		</div>
 	</div>
 </div>
 

@@ -7,16 +7,9 @@
 
 <div class="app">
 	<Header />
-
 	<main>
 		{@render children()}
 	</main>
-
-	<footer>
-		<p>
-			visit <a href="https://example.com">https://example.com</a> to see more information about us.
-		</p>
-	</footer>
 </div>
 
 <style>
@@ -35,23 +28,5 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
-	}
-
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
-	}
-
-	@media (min-width: 480px) {
-		footer {
-			padding: 12px 0;
-		}
 	}
 </style>

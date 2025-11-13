@@ -1,5 +1,13 @@
 <script lang="ts">
 	import Form from '../../components/Form.svelte';
+	import type { StudentData } from '../../types/types';
+
+	let student: StudentData = {
+		firstName: '',
+		lastName: '',
+		class: '',
+		age: 0
+	};
 </script>
 
 <svelte:head>
@@ -13,5 +21,5 @@
 		Please enter the student's first and last name, alongside the class you would like to enroll
 		them in. Press Submit to complete the registration.
 	</h4>
-	<Form />
+	<Form data={student} />
 </div>

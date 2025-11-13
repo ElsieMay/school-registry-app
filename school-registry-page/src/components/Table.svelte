@@ -5,7 +5,7 @@
 	export let data: StudentData[] | TeacherData[];
 </script>
 
-<table class="w-full table-auto border-collapse md:table-fixed lg:table-auto">
+<table class="w-100 table-auto border-collapse lg:table-auto">
 	<thead>
 		<tr>
 			{#each columns as column}
