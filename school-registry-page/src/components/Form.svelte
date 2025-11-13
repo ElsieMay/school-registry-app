@@ -17,7 +17,7 @@
 		return 'subject' in data;
 	}
 
-	let isFormInvalid: boolean;
+	let isFormInvalid: boolean = false;
 
 	function submitForm(event: SubmitEvent) {
 		event.preventDefault();
@@ -38,7 +38,12 @@
 		return value !== '' && value !== null && value !== undefined && value !== 0;
 	}
 
-	$: isFormInvalid = validateForm();
+	$: isFormInvalid = isStudent(data)
+		? validateField(data.firstName) &&
+			validateField(data.lastName) &&
+			validateField(data.class) &&
+			validateField(data.age)
+		: validateField(data.firstName) && validateField(data.lastName) && validateField(data.subject);
 </script>
 
 <form method="POST" action="?/register" on:submit={submitForm}>
