@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Table from '../components/Table.svelte';
+	import Table from '$lib/components/Table.svelte';
 	import type { RegistryData } from '../types/types';
 	export let data: RegistryData;
 	let studentTableTitles = ['First Name', 'Last Name', 'Class', 'Age'];
@@ -27,6 +27,17 @@
 </div>
 
 <style>
+	@media (max-width: 768px) {
+		.sub-content {
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.students,
+		.teachers {
+			margin: 0;
+		}
+	}
 	.text-column {
 		max-width: 600px;
 		margin: 0 auto 2rem auto;

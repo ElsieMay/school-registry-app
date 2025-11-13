@@ -1,6 +1,6 @@
-<script>
-	export let symbol;
-	export let isValid = false;
+<script lang="ts">
+	export let symbol: string = 'Submit';
+	export let isValid: boolean = false;
 </script>
 
 <button on:click disabled={!isValid}>

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Form from '../../components/Form.svelte';
+	import Form from '../../lib/components/Form.svelte';
 	import type { StudentData } from '../../types/types';
 
 	let student: StudentData = {

@@ -1,23 +1,23 @@
 <script lang="ts">
-	import type { StudentData, TeacherData } from '../types/types';
+	import type { StudentData, TeacherData } from '../../types/types';
 
-	export let columns;
+	export let columns: string[];
 	export let data: StudentData[] | TeacherData[];
 </script>
 
 <table class="w-100 table-auto border-collapse lg:table-auto">
 	<thead>
 		<tr>
-			{#each columns as column}
+			{#each columns as column, colIndex (column)}
 				<th>{column}</th>
 			{/each}
 		</tr>
 	</thead>
 	<tbody>
-		{#each data as row}
+		{#each data as row, rowIndex (rowIndex)}
 			<tr>
-				{#each Object.values(row) as cell}
-					<td contenteditable="true" bind:innerHTML={cell}></td>
+				{#each Object.values(row) as cell, cellIndex (cellIndex)}
+					<td>{cell}</td>
 				{/each}
 			</tr>
 		{/each}

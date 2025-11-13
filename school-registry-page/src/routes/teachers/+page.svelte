@@ -1,8 +1,9 @@
 <script lang="ts">
-	import Form from '../../components/Form.svelte';
+	import Form from '$lib/components/Form.svelte';
 	import type { TeacherData } from '../../types/types';
 
 	let teacher: TeacherData = {
+		type: 'teacher',
 		firstName: '',
 		lastName: '',
 		subject: ''
@@ -10,8 +11,8 @@
 </script>
 
 <svelte:head>
-	<title>Enroll a Student</title>
-	<meta name="description" content="Students enrollment form" />
+	<title>Register a Teacher</title>
+	<meta name="description" content="Teacher registration form" />
 </svelte:head>
 
 <div class="text-column">
