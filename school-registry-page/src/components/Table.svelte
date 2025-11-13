@@ -5,29 +5,43 @@
 	export let data: StudentData[] | TeacherData[];
 </script>
 
-<div class="table">
-	<table>
-		<thead>
+<table class="w-full table-auto border-collapse md:table-fixed lg:table-auto">
+	<thead>
+		<tr>
+			{#each columns as column}
+				<th>{column}</th>
+			{/each}
+		</tr>
+	</thead>
+	<tbody>
+		{#each data as row}
 			<tr>
-				{#each columns as column}
-					<th>{column}</th>
+				{#each Object.values(row) as cell}
+					<td contenteditable="true" bind:innerHTML={cell}></td>
 				{/each}
 			</tr>
-		</thead>
-		<tbody>
-			{#each data as row}
-				<tr>
-					{#each Object.values(row) as cell}
-						<td contenteditable="true" bind:innerHTML={cell}></td>
-					{/each}
-				</tr>
-			{/each}
-		</tbody>
-	</table>
-</div>
+		{/each}
+	</tbody>
+</table>
 
 <style>
-	tr td:focus {
-		background: #eee;
+	thead {
+		background: rgba(0, 0, 0, 0.4);
+	}
+	table {
+		border-radius: 8px;
+		overflow: hidden;
+		background: rgba(0, 0, 0, 0.24);
+	}
+	th,
+	td {
+		padding: 12px 16px;
+		border-bottom: 1px solid var(--color-border);
+		text-align: left;
+		color: var(--color-text);
+	}
+
+	tbody tr:last-child td {
+		border-bottom: none;
 	}
 </style>

@@ -9,9 +9,9 @@
 
 <div class="text-column">
 	<h1>Enroll a Student</h1>
-	<p>
+	<h4>
 		Please enter the student's first and last name, alongside the class you would like to enroll
 		them in. Press Submit to complete the registration.
-	</p>
+	</h4>
 	<Form />
 </div>

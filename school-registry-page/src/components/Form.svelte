@@ -18,7 +18,7 @@
 		};
 	}}
 >
-	<div class="form-group">
+	<div class="form-group w-full">
 		<label for="firstName">First Name:</label>
 		<input type="text" id="firstName" name="firstName" required />
 		<label for="lastName">Last Name:</label>
@@ -37,12 +37,15 @@
 	form {
 		display: flex;
 		justify-content: center;
+		background: rgba(0, 0, 0, 0.4);
+		border-radius: 16px;
+		overflow: hidden;
 	}
 	.form-group {
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-		width: 300px;
+		padding: 20px;
 	}
 	label {
 		font-weight: bold;
@@ -50,6 +53,14 @@
 	input {
 		padding: 0.5rem;
 		font-size: 1rem;
-		border: 1px solid #ccc;
+		border: 1px solid white;
+		color: white;
+		border-radius: 8px;
+	}
+	.button-container {
+		display: flex;
+		justify-content: center;
+		margin-top: 1rem;
+		padding-bottom: 20px;
 	}
 </style>

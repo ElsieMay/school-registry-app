@@ -1,11 +1,12 @@
 <script lang="ts">
 	import Table from '../components/Table.svelte';
-	import type { StudentData, TeacherData } from '../../types';
+	import school from '../lib/images/school.jpg';
+	import type { StudentData, TeacherData } from '../types/types';
 
 	export const students: StudentData[] = [
-		{ firstName: 'John', lastName: 'Name', className: '2A', age: 7 },
-		{ firstName: 'Sarah', lastName: 'Name', className: '3B', age: 8 },
-		{ firstName: 'Afshin', lastName: 'Name', className: '6H', age: 11 }
+		{ firstName: 'John', lastName: 'Name', class: '2A', age: 7 },
+		{ firstName: 'Sarah', lastName: 'Name', class: '3B', age: 8 },
+		{ firstName: 'Afshin', lastName: 'Name', class: '6H', age: 11 }
 	];
 
 	export const teachers: TeacherData[] = [
@@ -28,14 +29,15 @@
 	<p>Please see the students and teachers currently registered below...</p>
 </div>
 
-<div class="tables"></div>
-<div class="students">
-	<h2>Enrolled Students:</h2>
-	<Table data={students} columns={studentTableTitles} />
-</div>
-<div class="teachers">
-	<h2>Current Teachers:</h2>
-	<Table data={teachers} columns={teacherTableTitles} />
+<div class="sub-content">
+	<div class="students">
+		<h2>Enrolled Students:</h2>
+		<Table data={students} columns={studentTableTitles} />
+	</div>
+	<div class="teachers">
+		<h2>Current Teachers:</h2>
+		<Table data={teachers} columns={teacherTableTitles} />
+	</div>
 </div>
 
 <style>
@@ -43,5 +45,18 @@
 		max-width: 600px;
 		margin: 0 auto 2rem auto;
 		text-align: center;
+	}
+
+	.sub-content {
+		display: flex;
+		flex-direction: row;
+		align-self: center;
+	}
+
+	.students,
+	.teachers {
+		margin: 0 2rem;
+		flex: 1;
+		align-items: center;
 	}
 </style>

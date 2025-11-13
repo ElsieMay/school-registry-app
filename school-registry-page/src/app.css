@@ -7,13 +7,14 @@
 		'Open Sans', 'Helvetica Neue', sans-serif;
 	--font-mono: 'Fira Mono', monospace;
 	--color-bg-0: rgb(65, 12, 211);
-	--color-bg-1: hsl(262, 59%, 40%);
+	--color-bg-1: hsl(252, 55%, 40%);
 	--color-bg-2: hsl(262, 59%, 20%);
 	--color-theme-1: #4c00ff;
-	--color-theme-2: #a64065;
+	--color-theme-2: rgb(65, 12, 211);
 	--color-text: rgba(255, 255, 255, 1);
 	--column-width: 42rem;
 	--column-margin-top: 4rem;
+	--color-border: rgba(255, 255, 255, 0.2);
 	font-family: var(--font-body);
 	color: var(--color-text);
 }
@@ -51,10 +52,17 @@ a:hover {
 h1 {
 	font-size: 2rem;
 	text-align: center;
+	padding: 20px;
 }
 
 h2 {
-	font-size: 1.8rem;
+	font-size: 1.4rem;
+	padding: 20px;
+}
+
+h4 {
+	font-size: 1rem;
+	padding: 20px 80px;
 }
 
 pre {

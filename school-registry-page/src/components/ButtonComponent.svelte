@@ -2,7 +2,7 @@
 	export let symbol;
 </script>
 
-<button on:click style="background-color: #a64065">
+<button on:click>
 	{symbol}
 </button>
 
@@ -11,12 +11,14 @@
 		border: none;
 		padding: 0.5rem 2rem;
 		color: #fff;
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		border-radius: 1rem;
 		transition: all 250ms;
 		box-shadow:
 			0px 3px 3px rgba(0, 0, 0, 0.25),
 			inset 0px -2px 3px rgba(0, 0, 0, 0.25);
+		width: 50%;
+		background-color: var(--color-theme-2);
 	}
 	button:hover {
 		cursor: pointer;
