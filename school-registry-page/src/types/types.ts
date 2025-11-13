@@ -10,3 +10,8 @@ export interface TeacherData {
 	lastName: string;
 	subject: string;
 }
+
+export type RegistryData = {
+	students: StudentData[];
+	teachers: TeacherData[];
+};

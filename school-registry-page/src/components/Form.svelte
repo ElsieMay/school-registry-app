@@ -13,26 +13,12 @@
 		return 'class' in data && 'age' in data;
 	}
 
-	function isTeacher(data: StudentData | TeacherData): data is TeacherData {
-		return 'subject' in data;
-	}
-
 	let isFormInvalid: boolean = false;
 
 	function submitForm(event: SubmitEvent) {
 		event.preventDefault();
 		console.log(data, 'hellow world');
 	}
-
-	// function validateForm() {
-	// 	if (isStudent(data)) {
-	// 		console.log('Validating student data');
-	// 		return !!data.firstName && !!data.lastName && !!data.class && !!data.age;
-	// 	} else {
-	// 		console.log('Validating teacher data');
-	// 		return !!data.firstName && !!data.lastName && !!data.subject;
-	// 	}
-	// }
 
 	function validateField(value: string | number) {
 		return value !== '' && value !== null && value !== undefined && value !== 0;
@@ -86,9 +72,6 @@
 		gap: 0.5rem;
 		padding: 40px;
 	}
-	/* label {
-		font-weight: bold;
-	} */
 	input {
 		padding: 0.5rem;
 		font-size: 1rem;
