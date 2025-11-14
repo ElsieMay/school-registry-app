@@ -65,7 +65,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.6);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -73,14 +73,13 @@
 	}
 
 	.modal {
-		border: none;
+		border: 1px solid var(--color-theme-2);
 		border-radius: 8px;
 		max-width: 90%;
 		max-height: 90dvh;
 		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		background: rgba(0, 0, 0, 0.4);
+		background: hsl(254, 68%, 11%);
 		backdrop-filter: blur(10px);
-		color: white;
 		margin: 0;
 		overflow-y: auto;
 		padding: 1em;
