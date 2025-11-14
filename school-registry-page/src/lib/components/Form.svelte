@@ -70,11 +70,11 @@
 
 <form on:submit={submitForm}>
 	<div class="form-group w-full">
+		<label for="firstName">Class <span class="text-red-600">*</span></label>
 		<input
 			type="text"
 			bind:value={data.firstName}
 			placeholder="First Name"
-			required
 			class="input"
 			aria-required="true"
 			aria-describedby="firstName-error"
@@ -82,11 +82,11 @@
 		{#if (!validateName(data.firstName) || !validateField(data.firstName)) && data.firstName.length > 0}
 			<p id="firstName-error" class="mt-1 text-sm text-red-600">Please enter a valid first name.</p>
 		{/if}
+		<label for="lastName">Class <span class="text-red-600">*</span></label>
 		<input
 			type="text"
 			bind:value={data.lastName}
 			placeholder="Last Name"
-			required
 			class="input"
 			aria-required="true"
 			aria-describedby="lastName-error"
@@ -95,11 +95,11 @@
 			<p id="lastName-error" class="mt-1 text-sm text-red-600">Please enter a valid last name.</p>
 		{/if}
 		{#if isStudent(data)}
+			<label for="className">Class <span class="text-red-600">*</span></label>
 			<input
 				type="text"
 				bind:value={data.class}
 				placeholder="Class"
-				required
 				class="input"
 				aria-required="true"
 				aria-describedby="className-error"
@@ -107,11 +107,11 @@
 			{#if (!validateClass(data.class) || !validateField(data.class)) && data.class.length > 0}
 				<p id="className-error" class="mt-1 text-sm text-red-600">Please enter a valid class.</p>
 			{/if}
+			<label for="age">Class <span class="text-red-600">*</span></label>
 			<input
 				type="number"
 				bind:value={data.age}
 				placeholder="Age"
-				required
 				class="input"
 				aria-required="true"
 				aria-describedby="age-error"
@@ -119,17 +119,18 @@
 			{#if !validateAge(data.age) && data.age > 0}
 				<p id="age-error" class="mt-1 text-sm text-red-600">Please enter a valid age.</p>
 			{/if}
-		{:else}<input
+		{:else}
+			<label for="subject">Class <span class="text-red-600">*</span></label>
+			<input
 				type="text"
 				bind:value={data.subject}
 				placeholder="Subject"
-				required
 				class="input"
 				aria-required="true"
 				aria-describedby="subject-error"
 			/>
 			{#if (!validateName(data.subject) || !validateField(data.subject)) && data.subject.length > 0}
-				<p id="subject-error" class="mt-1 text-sm text-red-600">Please enter a valid email.</p>
+				<p id="subject-error" class="mt-1 text-sm text-red-600">Please enter a valid subject.</p>
 			{/if}
 		{/if}
 		<div class="button-container">
@@ -155,6 +156,13 @@
 		gap: 0.5rem;
 		padding: 40px;
 	}
+	label {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--color-text);
+		margin-bottom: 0.25rem;
+	}
+
 	input {
 		padding: 0.5rem;
 		font-size: 1rem;
@@ -162,6 +170,7 @@
 		color: white;
 		border-radius: 8px;
 		background: rgba(0, 0, 0, 0.4);
+		margin-bottom: 0.5rem;
 	}
 	input:focus {
 		outline: none;
