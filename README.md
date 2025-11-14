@@ -64,6 +64,7 @@ src/
 ## Scripts
 
 - `npm run dev` - Start development server
+- `cd school-registry-page && npm run dev` - From root directory
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build
 - `npm run lint` - Lint and format code
