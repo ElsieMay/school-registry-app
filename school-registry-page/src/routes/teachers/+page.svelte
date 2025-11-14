@@ -20,5 +20,5 @@
 		Please enter the teachers details you would like to register below. Press Submit to complete the
 		registration.
 	</h4>
-	<Form data={teacher} />
+	<Form data={teacher} formType="teacher"/>
 </div>

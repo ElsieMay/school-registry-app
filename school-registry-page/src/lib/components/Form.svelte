@@ -13,21 +13,15 @@
 	let isFormValid: boolean = false;
 	let showModal: boolean = false;
 
-	export let formType: 'student' | 'teacher' = 'student';
+	export let formType: 'student' | 'teacher';
 
 	export let data: StudentData | TeacherData =
 		formType === 'student'
 			? { firstName: '', lastName: '', class: '', age: 0 }
 			: { firstName: '', lastName: '', subject: '' };
 
-	function getInitialData(): StudentData | TeacherData {
-		return formType === 'student'
-			? { firstName: '', lastName: '', class: '', age: 0 }
-			: { firstName: '', lastName: '', subject: '' };
-	}
-
 	function resetForm() {
-		data = getInitialData();
+		data = data
 	}
 
 	function isStudent(data: StudentData | TeacherData): data is StudentData {

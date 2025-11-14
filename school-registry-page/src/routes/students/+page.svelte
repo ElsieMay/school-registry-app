@@ -21,5 +21,5 @@
 		Please enter the student's first and last name, alongside the class you would like to enroll
 		them in. Press Submit to complete the registration.
 	</h4>
-	<Form data={student} />
+	<Form data={student} formType="student"/>
 </div>
