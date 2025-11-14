@@ -2,26 +2,26 @@
 	import type { StudentData, TeacherData } from '../../types/types';
 	import ButtonComponent from './ButtonComponent.svelte';
 	import Modal from './Modal.svelte';
-	import { addStudent, addTeacher } from '$lib/stores/registry';
+	import { addStudent, addTeacher } from '../../lib/stores/registry';
 	import {
 		validateAge,
 		validateClass,
 		validateField,
 		validateName
-	} from '$lib/validators/validators';
+	} from '../../lib/validators/validators';
 
 	let isFormValid: boolean = false;
 	let showModal: boolean = false;
+
+	function isStudent(data: StudentData | TeacherData): data is StudentData {
+		return (data as StudentData).class !== undefined;
+	}
 
 	export let data: StudentData | TeacherData = getInitialData();
 	function getInitialData(): StudentData | TeacherData {
 		return isStudent(data)
 			? { firstName: '', lastName: '', class: '', age: 0 }
 			: { firstName: '', lastName: '', subject: '' };
-	}
-
-	function isStudent(data: StudentData | TeacherData): data is StudentData {
-		return (data as StudentData).class !== undefined;
 	}
 	function resetForm() {
 		data = getInitialData();
@@ -32,7 +32,10 @@
 			try {
 				addStudent(data);
 			} catch (error) {
-				throw error;
+				console.error(error);
+				// Optionally, set an error message state to display in the UI
+				// errorMessage = "Failed to add student. Please try again.";
+				return;
 			}
 		} else {
 			try {
@@ -64,7 +67,7 @@
 
 <form on:submit={submitForm}>
 	<div class="form-group w-full">
-		<label for="firstName">firstName<span class="text-red-600">*</span></label>
+		<label for="firstName">First Name<span class="text-red-600">*</span></label>
 		<input
 			id="firstName"
 			type="text"
@@ -77,7 +80,7 @@
 		{#if (!validateName(data.firstName) || !validateField(data.firstName)) && data.firstName.length > 0}
 			<p id="firstName-error" class="mt-1 text-sm text-red-600">Please enter a valid first name.</p>
 		{/if}
-		<label for="lastName">lastName<span class="text-red-600">*</span></label>
+		<label for="lastName">Last Name<span class="text-red-600">*</span></label>
 		<input
 			id="lastName"
 			type="text"
@@ -91,7 +94,7 @@
 			<p id="lastName-error" class="mt-1 text-sm text-red-600">Please enter a valid last name.</p>
 		{/if}
 		{#if isStudent(data)}
-			<label for="className">class<span class="text-red-600">*</span></label>
+			<label for="className">Class Name<span class="text-red-600">*</span></label>
 			<input
 				id="className"
 				type="text"
@@ -104,7 +107,7 @@
 			{#if (!validateClass(data.class) || !validateField(data.class)) && data.class.length > 0}
 				<p id="className-error" class="mt-1 text-sm text-red-600">Please enter a valid class.</p>
 			{/if}
-			<label for="age">age<span class="text-red-600">*</span></label>
+			<label for="age">Age<span class="text-red-600">*</span></label>
 			<input
 				id="age"
 				type="number"
@@ -118,7 +121,7 @@
 				<p id="age-error" class="mt-1 text-sm text-red-600">Please enter a valid age.</p>
 			{/if}
 		{:else}
-			<label for="subject">subject<span class="text-red-600">*</span></label>
+			<label for="subject">Subject<span class="text-red-600">*</span></label>
 			<input
 				id="subject"
 				type="text"

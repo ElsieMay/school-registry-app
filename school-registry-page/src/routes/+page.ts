@@ -1,4 +1,4 @@
-import { getRegistryData } from '$lib/stores/registry';
+import { getRegistryData } from '../lib/stores/registry';
 
 export const prerender = true;
 
