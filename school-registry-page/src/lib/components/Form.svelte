@@ -13,19 +13,27 @@
 	let isFormValid: boolean = false;
 	let showModal: boolean = false;
 
+	export let formType: 'student' | 'teacher' = 'student';
+
+	export let data: StudentData | TeacherData =
+		formType === 'student'
+			? { firstName: '', lastName: '', class: '', age: 0 }
+			: { firstName: '', lastName: '', subject: '' };
+
+	function getInitialData(): StudentData | TeacherData {
+		return formType === 'student'
+			? { firstName: '', lastName: '', class: '', age: 0 }
+			: { firstName: '', lastName: '', subject: '' };
+	}
+
+	function resetForm() {
+		data = getInitialData();
+	}
+
 	function isStudent(data: StudentData | TeacherData): data is StudentData {
 		return (data as StudentData).class !== undefined;
 	}
 
-	export let data: StudentData | TeacherData = getInitialData();
-	function getInitialData(): StudentData | TeacherData {
-		return isStudent(data)
-			? { firstName: '', lastName: '', class: '', age: 0 }
-			: { firstName: '', lastName: '', subject: '' };
-	}
-	function resetForm() {
-		data = getInitialData();
-	}
 	function submitForm(event: SubmitEvent) {
 		event.preventDefault();
 		if (isStudent(data)) {
@@ -33,15 +41,14 @@
 				addStudent(data);
 			} catch (error) {
 				console.error(error);
-				// Optionally, set an error message state to display in the UI
-				// errorMessage = "Failed to add student. Please try again.";
 				return;
 			}
 		} else {
 			try {
 				addTeacher(data);
 			} catch (error) {
-				throw error;
+				console.error(error);
+				return;
 			}
 		}
 		resetForm();
