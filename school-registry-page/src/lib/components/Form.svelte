@@ -1,7 +1,7 @@
 <script lang="ts">
-	// import type { Actions } from '@sveltejs/kit';
 	import type { StudentData, TeacherData } from '../../types/types';
 	import ButtonComponent from './ButtonComponent.svelte';
+	import Modal from './Modal.svelte';
 	import { addStudent, addTeacher } from '$lib/stores/registry';
 	import {
 		validateAge,
@@ -9,6 +9,7 @@
 		validateField,
 		validateName
 	} from '$lib/validators/validators';
+
 	export let data: StudentData | TeacherData = {
 		firstName: '',
 		lastName: '',
@@ -21,6 +22,7 @@
 	}
 
 	let isFormValid: boolean = false;
+	let showModal: boolean = false;
 
 	function submitForm(event: SubmitEvent) {
 		event.preventDefault();
@@ -32,15 +34,8 @@
 			addTeacher(data);
 		}
 		// TODO: Show success message and reset form
+		showModal = true;
 	}
-
-	// export const actions: Actions = {
-	// 	register: async ({ request }) => {
-	// 		const data = await request.formData();
-	// 		// Process registration
-	// 		return { success: true };
-	// 	}
-	// };
 
 	function validate(data: StudentData | TeacherData) {
 		if (
@@ -61,7 +56,7 @@
 	$: isFormValid = validate(data);
 </script>
 
-<form method="POST" action="?/register" on:submit={submitForm}>
+<form on:submit={submitForm}>
 	<div class="form-group w-full">
 		<input
 			type="text"
@@ -112,6 +107,9 @@
 		<div class="button-container">
 			<ButtonComponent symbol="Submit" isValid={isFormValid} />
 		</div>
+		{#if showModal}
+			<Modal {showModal} />
+		{/if}
 	</div>
 </form>
 

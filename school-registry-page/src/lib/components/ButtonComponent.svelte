@@ -10,7 +10,6 @@
 <style>
 	button {
 		border: none;
-		padding: 0.5rem 2rem;
 		font-size: 1.2rem;
 		border-radius: 1rem;
 		transition: all 250ms;
@@ -19,6 +18,8 @@
 			inset 0px -2px 3px rgba(0, 0, 0, 0.25);
 		width: 50%;
 		background-color: var(--color-theme-2);
+		min-height: 44px;
+		min-width: 44px;
 	}
 	button:hover {
 		cursor: pointer;

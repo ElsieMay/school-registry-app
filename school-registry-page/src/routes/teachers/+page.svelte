@@ -3,7 +3,6 @@
 	import type { TeacherData } from '../../types/types';
 
 	let teacher: TeacherData = {
-		type: 'teacher',
 		firstName: '',
 		lastName: '',
 		subject: ''

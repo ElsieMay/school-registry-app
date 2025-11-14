@@ -1,30 +1,26 @@
-import { writable } from 'svelte/store';
 import type { RegistryData, StudentData, TeacherData } from '../../types/types';
 
-export const registryStore = writable<RegistryData>({
-	students: [],
-	teachers: []
-});
+let registryData: RegistryData = {
+	students: [
+		{ firstName: 'John', lastName: 'Name', class: '2A', age: 7 },
+		{ firstName: 'Sarah', lastName: 'Name', class: '3B', age: 8 },
+		{ firstName: 'Afshin', lastName: 'Name', class: '6H', age: 11 }
+	],
+	teachers: [
+		{ firstName: 'Mr.', lastName: 'Name', subject: 'Mathematics' },
+		{ firstName: 'Mrs.', lastName: 'Name', subject: 'English' },
+		{ firstName: 'Mr.', lastName: 'Name', subject: 'Science' }
+	]
+};
 
-export function addStudent(student: StudentData) {
-	console.log('Adding student:', student);
-	registryStore.update((data) => ({
-		...data,
-		students: [...data.students, student]
-	}));
+export function getRegistryData(): RegistryData {
+	return registryData;
 }
 
-export function addTeacher(teacher: TeacherData) {
-	registryStore.update((data) => ({
-		...data,
-		teachers: [...data.teachers, teacher]
-	}));
+export function addStudent(student: StudentData): void {
+	registryData.students.push(student);
 }
 
-function loadFromStorage(): RegistryData {
-	const storedData = localStorage.getItem('registryStore');
-	if (storedData) {
-		return JSON.parse(storedData) as RegistryData;
-	}
-	return { students: [], teachers: [] };
+export function addTeacher(teacher: TeacherData): void {
+	registryData.teachers.push(teacher);
 }
