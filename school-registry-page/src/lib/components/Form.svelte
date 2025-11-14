@@ -61,7 +61,7 @@
 			console.log('validating student');
 			return validateClass(data.class) && validateField(data.class) && validateAge(data.age);
 		} else {
-			return validateName(data.subject);
+			return validateField(data.subject) && validateName(data.subject);
 		}
 	}
 
@@ -79,6 +79,9 @@
 			aria-required="true"
 			aria-describedby="firstName-error"
 		/>
+		{#if (!validateName(data.firstName) || !validateField(data.firstName)) && data.firstName.length > 0}
+			<p id="firstName-error" class="mt-1 text-sm text-red-600">Please enter a valid first name.</p>
+		{/if}
 		<input
 			type="text"
 			bind:value={data.lastName}
@@ -88,6 +91,9 @@
 			aria-required="true"
 			aria-describedby="lastName-error"
 		/>
+		{#if (!validateName(data.lastName) || !validateField(data.lastName)) && data.lastName.length > 0}
+			<p id="lastName-error" class="mt-1 text-sm text-red-600">Please enter a valid last name.</p>
+		{/if}
 		{#if isStudent(data)}
 			<input
 				type="text"
@@ -98,6 +104,9 @@
 				aria-required="true"
 				aria-describedby="className-error"
 			/>
+			{#if (!validateClass(data.class) || !validateField(data.class)) && data.class.length > 0}
+				<p id="className-error" class="mt-1 text-sm text-red-600">Please enter a valid class.</p>
+			{/if}
 			<input
 				type="number"
 				bind:value={data.age}
@@ -107,6 +116,9 @@
 				aria-required="true"
 				aria-describedby="age-error"
 			/>
+			{#if !validateAge(data.age) && data.age > 0}
+				<p id="age-error" class="mt-1 text-sm text-red-600">Please enter a valid age.</p>
+			{/if}
 		{:else}<input
 				type="text"
 				bind:value={data.subject}
@@ -115,7 +127,11 @@
 				class="input"
 				aria-required="true"
 				aria-describedby="subject-error"
-			/>{/if}
+			/>
+			{#if (!validateName(data.subject) || !validateField(data.subject)) && data.subject.length > 0}
+				<p id="subject-error" class="mt-1 text-sm text-red-600">Please enter a valid email.</p>
+			{/if}
+		{/if}
 		<div class="button-container">
 			<ButtonComponent symbol="Submit" isValid={isFormValid} />
 		</div>
