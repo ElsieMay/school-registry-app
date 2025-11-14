@@ -24,16 +24,28 @@
 	let isFormValid: boolean = false;
 	let showModal: boolean = false;
 
+	function getInitialData(): StudentData | TeacherData {
+		return isStudent(data)
+			? { firstName: '', lastName: '', class: '', age: 0 }
+			: { firstName: '', lastName: '', subject: '' };
+	}
+
+	function resetForm() {
+		data = getInitialData();
+	}
+
 	function submitForm(event: SubmitEvent) {
 		event.preventDefault();
-		console.log(data, 'hellow world');
+		console.log(data, 'submitted data');
 
 		if (isStudent(data)) {
 			addStudent(data);
 		} else {
 			addTeacher(data);
 		}
-		// TODO: Show success message and reset form
+
+		// Clear form after successful submission
+		resetForm();
 		showModal = true;
 	}
 
