@@ -4,27 +4,58 @@
 
 <header>
 	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
+		<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+			<path d="M0,0 L50,67 C75,100 75,100 100,100 L100,0 Z" />
 		</svg>
 		<ul>
-			<li aria-current={page.url.pathname === '/' ? 'page' : undefined}>
+			<li
+				aria-current={page.url.pathname === '/' ? 'page' : undefined}
+				class="text-center break-words"
+			>
 				<a href="/">School Registry</a>
 			</li>
-			<li aria-current={page.url.pathname === '/students' ? 'page' : undefined}>
+			<li
+				aria-current={page.url.pathname === '/students' ? 'page' : undefined}
+				class="text-center break-words"
+			>
 				<a href="/students">Enroll a Student</a>
 			</li>
-			<li aria-current={page.url.pathname === '/teachers' ? 'page' : undefined}>
-				<a href="/teachers">Add a Teacher</a>
+			<li
+				aria-current={page.url.pathname === '/teachers' ? 'page' : undefined}
+				class="text-center break-words"
+			>
+				<a href="/teachers">Register a Teacher</a>
 			</li>
 		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
+		<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+			<path d="M100,0 L50,67 C25,100 25,100 0,100 L0,0 Z" />
 		</svg>
 	</nav>
 </header>
 
 <style>
+	@media (max-width: 768px) {
+		svg {
+			width: 1em;
+		}
+
+		nav a {
+			padding: 0 1rem;
+			font-size: 0.7rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		svg {
+			width: 0.5em;
+		}
+
+		nav a {
+			padding: 0 0.5rem;
+			font-size: 0.65rem;
+		}
+	}
+
 	header {
 		align-self: center;
 	}
@@ -78,7 +109,7 @@
 		display: flex;
 		height: 100%;
 		align-items: center;
-		padding: 0 0.5rem;
+		padding: 0 2rem;
 		color: var(--color-text);
 		font-weight: 700;
 		font-size: 0.8rem;

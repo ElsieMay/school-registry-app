@@ -10,45 +10,40 @@
 		validateName
 	} from '$lib/validators/validators';
 
-	export let data: StudentData | TeacherData = {
-		firstName: '',
-		lastName: '',
-		class: '',
-		age: 0
-	};
-
-	function isStudent(data: StudentData | TeacherData): data is StudentData {
-		return (data as StudentData).class !== undefined;
-	}
-
 	let isFormValid: boolean = false;
 	let showModal: boolean = false;
 
+	export let data: StudentData | TeacherData = getInitialData();
 	function getInitialData(): StudentData | TeacherData {
 		return isStudent(data)
 			? { firstName: '', lastName: '', class: '', age: 0 }
 			: { firstName: '', lastName: '', subject: '' };
 	}
 
+	function isStudent(data: StudentData | TeacherData): data is StudentData {
+		return (data as StudentData).class !== undefined;
+	}
 	function resetForm() {
 		data = getInitialData();
 	}
-
 	function submitForm(event: SubmitEvent) {
 		event.preventDefault();
-		console.log(data, 'submitted data');
-
 		if (isStudent(data)) {
-			addStudent(data);
+			try {
+				addStudent(data);
+			} catch (error) {
+				throw error;
+			}
 		} else {
-			addTeacher(data);
+			try {
+				addTeacher(data);
+			} catch (error) {
+				throw error;
+			}
 		}
-
-		// Clear form after successful submission
 		resetForm();
 		showModal = true;
 	}
-
 	function validate(data: StudentData | TeacherData) {
 		if (
 			!validateName(data.firstName) ||
@@ -58,7 +53,6 @@
 		) {
 			return false;
 		} else if (isStudent(data)) {
-			console.log('validating student');
 			return validateClass(data.class) && validateField(data.class) && validateAge(data.age);
 		} else {
 			return validateField(data.subject) && validateName(data.subject);
@@ -70,8 +64,9 @@
 
 <form on:submit={submitForm}>
 	<div class="form-group w-full">
-		<label for="firstName">Class <span class="text-red-600">*</span></label>
+		<label for="firstName">firstName<span class="text-red-600">*</span></label>
 		<input
+			id="firstName"
 			type="text"
 			bind:value={data.firstName}
 			placeholder="First Name"
@@ -82,8 +77,9 @@
 		{#if (!validateName(data.firstName) || !validateField(data.firstName)) && data.firstName.length > 0}
 			<p id="firstName-error" class="mt-1 text-sm text-red-600">Please enter a valid first name.</p>
 		{/if}
-		<label for="lastName">Class <span class="text-red-600">*</span></label>
+		<label for="lastName">lastName<span class="text-red-600">*</span></label>
 		<input
+			id="lastName"
 			type="text"
 			bind:value={data.lastName}
 			placeholder="Last Name"
@@ -95,8 +91,9 @@
 			<p id="lastName-error" class="mt-1 text-sm text-red-600">Please enter a valid last name.</p>
 		{/if}
 		{#if isStudent(data)}
-			<label for="className">Class <span class="text-red-600">*</span></label>
+			<label for="className">class<span class="text-red-600">*</span></label>
 			<input
+				id="className"
 				type="text"
 				bind:value={data.class}
 				placeholder="Class"
@@ -107,8 +104,9 @@
 			{#if (!validateClass(data.class) || !validateField(data.class)) && data.class.length > 0}
 				<p id="className-error" class="mt-1 text-sm text-red-600">Please enter a valid class.</p>
 			{/if}
-			<label for="age">Class <span class="text-red-600">*</span></label>
+			<label for="age">age<span class="text-red-600">*</span></label>
 			<input
+				id="age"
 				type="number"
 				bind:value={data.age}
 				placeholder="Age"
@@ -120,8 +118,9 @@
 				<p id="age-error" class="mt-1 text-sm text-red-600">Please enter a valid age.</p>
 			{/if}
 		{:else}
-			<label for="subject">Class <span class="text-red-600">*</span></label>
+			<label for="subject">subject<span class="text-red-600">*</span></label>
 			<input
+				id="subject"
 				type="text"
 				bind:value={data.subject}
 				placeholder="Subject"

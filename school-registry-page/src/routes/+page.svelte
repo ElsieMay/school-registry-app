@@ -29,8 +29,11 @@
 <style>
 	@media (max-width: 768px) {
 		.sub-content {
+			display: flex;
 			flex-direction: column;
+			flex-wrap: wrap;
 			gap: 2rem;
+			padding-bottom: 40px;
 		}
 
 		.students,
@@ -43,13 +46,11 @@
 		margin: 0 auto 2rem auto;
 		text-align: center;
 	}
-
 	.sub-content {
 		display: flex;
 		flex-direction: row;
 		align-self: center;
 	}
-
 	.students,
 	.teachers {
 		margin: 0 2rem;

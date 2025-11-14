@@ -2,27 +2,14 @@
 	import ButtonComponent from './ButtonComponent.svelte';
 	import { fade, scale } from 'svelte/transition';
 	import { cubicOut } from 'svelte/easing';
+	import { goto } from '$app/navigation';
 
 	let { showModal = $bindable() } = $props<{ showModal?: boolean }>();
 
-	let dialog: HTMLDialogElement | null | undefined = $state();
-
-	$effect(() => {
-		if (showModal && dialog) {
-			dialog.showModal();
-		} else if (!showModal && dialog) {
-			dialog.close();
-		}
-	});
-
-	function closeModal() {
-		showModal = false;
-	}
-
-	import { goto } from '$app/navigation';
-	function onPress(e: PointerEvent): void {
+	const closeModal = () => (showModal = false);
+	const onPress = (): void => {
 		goto('/');
-	}
+	};
 </script>
 
 {#if showModal}
