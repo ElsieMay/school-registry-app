@@ -136,11 +136,12 @@
 		<div class="button-container">
 			<ButtonComponent symbol="Submit" isValid={isFormValid} />
 		</div>
-		{#if showModal}
-			<Modal {showModal} />
-		{/if}
 	</div>
 </form>
+
+{#if showModal}
+	<Modal {showModal} />
+{/if}
 
 <style>
 	form {

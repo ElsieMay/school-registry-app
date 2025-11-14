@@ -18,6 +18,11 @@
 	function closeModal() {
 		showModal = false;
 	}
+
+	import { goto } from '$app/navigation';
+	function onPress(e: PointerEvent): void {
+		goto('/');
+	}
 </script>
 
 {#if showModal}
@@ -47,7 +52,7 @@
 				<button class="close-button" onclick={closeModal} aria-label="Close modal">×</button>
 			</div>
 			<div class="button-container">
-				<ButtonComponent symbol="Return Home" isValid={true} />
+				<ButtonComponent symbol="Return Home" isValid={true} on:click={onPress} />
 			</div>
 		</div>
 	</div>
