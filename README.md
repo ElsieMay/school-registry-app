@@ -12,6 +12,10 @@ A modern, accessible SvelteKit web application for managing a simple school regi
 - Custom form validation and error messages
 - Clean, maintainable codebase
 
+<img width="1691" height="877" alt="Screenshot 2025-11-14 at 12 34 37" src="https://github.com/user-attachments/assets/893348e5-fd3d-41d3-b001-3152acb3dca6" />
+<img width="1690" height="874" alt="Screenshot 2025-11-14 at 12 34 56" src="https://github.com/user-attachments/assets/4e86aba5-f4d7-49ed-98b8-0bb181c7145e" />
+<img width="1690" height="875" alt="Screenshot 2025-11-14 at 12 35 11" src="https://github.com/user-attachments/assets/612ed248-d230-4d44-927a-9514c448d075" />
+
 ## Getting Started
 
 ### Prerequisites
